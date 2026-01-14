@@ -1,0 +1,77 @@
+{
+    "nav": {
+        "home": "Trang Chủ",
+        "about": "Giới Thiệu",
+        "skills": "Kỹ Năng",
+        "projects": "Dự Án",
+        "contact": "Liên Hệ"
+    },
+    "hero": {
+        "name": "Nguyễn Nam Thắng",
+        "greeting": "Xin chào, tôi là",
+        "role": "Kỹ Sư Phần Mềm",
+        "description": "Kiến tạo tương lai bằng những dòng code, tỉ mỉ từng pixel.",
+        "cta": "Xem Dự Án",
+        "contact_me": "Liên Hệ"
+    },
+    "about": {
+        "title": "Về Tôi",
+        "tagline": "Biến Ý Tưởng Thành",
+        "tagline_accent": "Hiện Thực Hiệu Quả",
+        "description": "Tôi là một Kỹ sư phần mềm với nền tảng vững chắc về Java, Spring Boot và ASP.NET. Tôi luôn đam mê xây dựng các ứng dụng hiệu quả và luôn sẵn sàng đóng góp cho các dự án thực tế với tinh thần làm việc nhóm cao.",
+        "education_title": "Học Vấn",
+        "education_school": "Đại học FPT",
+        "education_degree": "Cử nhân Kỹ thuật Phần mềm",
+        "education_period": "2022 – 2026",
+        "education_gpa": "GPA: 3.2"
+    },
+    "skills": {
+        "title": "Kỹ Năng Kỹ Thuật",
+        "tagline": "Những công cụ tôi dùng để kiến tạo tương lai.",
+        "languages": "Ngôn Ngữ Lập Trình",
+        "frontend": "Giao Diện (Front-end)",
+        "frameworks": "Frameworks",
+        "database": "Cơ Sở Dữ Liệu",
+        "tools": "API & Công Cụ",
+        "soft_skills": "Kỹ Năng Mềm",
+        "soft_skills_list": "Làm việc nhóm, Giao tiếp, Tư duy phản biện, Giải quyết vấn đề"
+    },
+    "projects": {
+        "title": "Dự Án Tiêu Biểu",
+        "tagline": "Biến ý tưởng thành hiện thực qua code.",
+        "view_code": "Xem Code",
+        "view_demo": "Xem Demo",
+        "fruit_store": {
+            "title": "Website Bán Trái Cây Online",
+            "role": "Lập trình Fullstack - Quản lý Sản phẩm",
+            "team_size": "Quy mô nhóm: 5",
+            "year": "2024",
+            "description": "Phát triển chức năng CRUD đầy đủ, danh sách sản phẩm với bộ lọc, thống kê doanh số và chatbot.",
+            "tech": "Java Servlet, SQL Server, HTML/CSS/JS, Bootstrap"
+        },
+        "food_hub": {
+            "title": "FoodHub - Hệ Thống Quản Lý Nhà Hàng",
+            "role": "Lập trình Fullstack - Module Admin",
+            "team_size": "Quy mô nhóm: 5",
+            "year": "2025",
+            "description": "Triển khai quản lý admin (thực đơn, nhân viên, khách hàng), theo dõi giao dịch, báo cáo doanh thu và RESTful APIs.",
+            "tech": "Java Spring Boot, MySQL, HTML/CSS/JS, Bootstrap"
+        }
+    },
+    "certificates": {
+        "title": "Chứng Chỉ",
+        "list": [
+            "Software Development Lifecycle Specialization (University of Minnesota)",
+            "Web Design for Everybody: Basics of Web Development & Coding Specialization"
+        ]
+    },
+    "contact": {
+        "title": "Liên Hệ",
+        "email": "Email",
+        "phone": "Số điện thoại",
+        "address": "Địa chỉ"
+    },
+    "footer": {
+        "rights": "© 2026 Nguyễn Nam Thắng. Bảo lưu mọi quyền."
+    }
+}

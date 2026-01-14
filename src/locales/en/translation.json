@@ -1,0 +1,77 @@
+{
+    "nav": {
+        "home": "Home",
+        "about": "About",
+        "skills": "Skills",
+        "projects": "Projects",
+        "contact": "Contact"
+    },
+    "hero": {
+        "name": "Nguyễn Nam Thắng",
+        "greeting": "Hello, I'm",
+        "role": "Software Engineer",
+        "description": "Passionate about building efficient applications and eager to contribute to real-world projects.",
+        "cta": "View Projects",
+        "contact_me": "Contact Me"
+    },
+    "about": {
+        "title": "About Me",
+        "tagline": "Turning Vision Into",
+        "tagline_accent": "Functional Reality",
+        "description": "I am a Software Engineer with a strong background in Java, Spring Boot, and ASP.NET. I have a passion for creating efficient software solutions and am always looking to learn new technologies.",
+        "education_title": "Education",
+        "education_school": "FPT University",
+        "education_degree": "Bachelor of Software Engineering",
+        "education_period": "2022 – 2026",
+        "education_gpa": "GPA: 3.2"
+    },
+    "skills": {
+        "title": "Technical Skills",
+        "tagline": "The tools I use to build the future.",
+        "languages": "Programming Languages",
+        "frontend": "Front-end",
+        "frameworks": "Frameworks",
+        "database": "Database",
+        "tools": "API & Tools",
+        "soft_skills": "Soft Skills",
+        "soft_skills_list": "Teamwork, Communication, Critical Thinking, Problem Solving"
+    },
+    "projects": {
+        "title": "Featured Projects",
+        "tagline": "Bringing ideas to life with code.",
+        "view_code": "View Code",
+        "view_demo": "View Demo",
+        "fruit_store": {
+            "title": "Online Fruit Store Web App",
+            "role": "Fullstack Developer - Product Management",
+            "team_size": "Team Size: 5",
+            "year": "2024",
+            "description": "Developed full CRUD functionality, product listing with filtering, sales statistics, and a chatbot.",
+            "tech": "Java Servlet, SQL Server, HTML/CSS/JS, Bootstrap"
+        },
+        "food_hub": {
+            "title": "FoodHub - Restaurant Management System",
+            "role": "Fullstack Developer - Admin Module",
+            "team_size": "Team Size: 5",
+            "year": "2025",
+            "description": "Implemented admin management (menu, emp, customers), transaction tracking, revenue reports, and RESTful APIs.",
+            "tech": "Java Spring Boot, MySQL, HTML/CSS/JS, Bootstrap"
+        }
+    },
+    "certificates": {
+        "title": "Certificates",
+        "list": [
+            "Software Development Lifecycle Specialization (University of Minnesota)",
+            "Web Design for Everybody: Basics of Web Development & Coding Specialization"
+        ]
+    },
+    "contact": {
+        "title": "Contact Me",
+        "email": "Email",
+        "phone": "Phone",
+        "address": "Address"
+    },
+    "footer": {
+        "rights": "© 2026 Nguyễn Nam Thắng. All rights reserved."
+    }
+}
