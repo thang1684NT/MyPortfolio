@@ -60,6 +60,54 @@ body {
 a { color: inherit; }
 img { max-width: 100%; }
 
+/* ---------- Animated background ----------
+   Three soft gradient orbs drifting slowly behind everything.
+   Transform-only animation on fixed layers — GPU-composited,
+   no canvas and no JavaScript, so it stays smooth. */
+.bg-anim {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+}
+.orb {
+  position: absolute;
+  border-radius: 50%;
+  will-change: transform;
+}
+.orb-1 {
+  width: 55vmax; height: 55vmax;
+  top: -18vmax; right: -12vmax;
+  background: radial-gradient(circle at center, rgba(52, 211, 153, 0.15), transparent 65%);
+  animation: drift-1 26s ease-in-out infinite alternate;
+}
+.orb-2 {
+  width: 48vmax; height: 48vmax;
+  bottom: -16vmax; left: -12vmax;
+  background: radial-gradient(circle at center, rgba(34, 211, 238, 0.12), transparent 65%);
+  animation: drift-2 32s ease-in-out infinite alternate;
+}
+.orb-3 {
+  width: 34vmax; height: 34vmax;
+  top: 38%; left: 52%;
+  background: radial-gradient(circle at center, rgba(167, 139, 250, 0.10), transparent 65%);
+  animation: drift-3 38s ease-in-out infinite alternate;
+}
+@keyframes drift-1 {
+  from { transform: translate(0, 0) scale(1); }
+  to { transform: translate(-9vmax, 7vmax) scale(1.12); }
+}
+@keyframes drift-2 {
+  from { transform: translate(0, 0) scale(1.05); }
+  to { transform: translate(8vmax, -6vmax) scale(0.95); }
+}
+@keyframes drift-3 {
+  from { transform: translate(0, 0) scale(1); }
+  to { transform: translate(-7vmax, -5vmax) scale(1.15); }
+}
+[data-theme='light'] .orb { opacity: 0.6; }
+
 .container {
   max-width: 1060px;
   margin: 0 auto;
@@ -276,6 +324,11 @@ img { max-width: 100%; }
   background: var(--surface);
   overflow: hidden;
   max-width: 640px;
+  animation: float-y 7s ease-in-out infinite alternate;
+}
+@keyframes float-y {
+  from { transform: translateY(0); }
+  to { transform: translateY(-7px); }
 }
 .hero-stat { flex: 1; padding: 1.1rem 1.25rem; }
 .hero-stat + .hero-stat { border-left: 1px solid var(--border); }
@@ -527,6 +580,6 @@ img { max-width: 100%; }
 
 @media (prefers-reduced-motion: reduce) {
   .reveal { opacity: 1; transform: none; transition: none; }
-  .hero h1 .accent, .hero-badge .dot { animation: none; }
+  .hero h1 .accent, .hero-badge .dot, .orb, .hero-stats { animation: none; }
   html { scroll-behavior: auto; }
 }

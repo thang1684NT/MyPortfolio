@@ -43,6 +43,11 @@ function App() {
 
   return (
     <div className="App">
+      <div className="bg-anim" aria-hidden="true">
+        <span className="orb orb-1"></span>
+        <span className="orb orb-2"></span>
+        <span className="orb orb-3"></span>
+      </div>
       <Navbar activeSection={activeSection} />
       <main>
         <Hero />
