@@ -300,6 +300,66 @@ img { max-width: 100%; }
 .hero-stat .num { font-size: 1.3rem; font-weight: 800; letter-spacing: -0.5px; }
 .hero-stat .lbl { font-size: 0.8rem; color: var(--text-3); margin-top: 0.15rem; }
 
+/* Hero two-column layout with the animated code window */
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.08fr 0.92fr;
+  gap: 3.2rem;
+  align-items: center;
+}
+.hero-code { min-width: 0; }
+.code-card {
+  background: var(--surface);
+  border: 1px solid var(--border-strong);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 24px 50px -18px rgba(0, 0, 0, 0.45);
+  animation: float-y 8s ease-in-out infinite alternate;
+}
+.code-card-head {
+  display: flex; align-items: center; gap: 0.45rem;
+  padding: 0.7rem 1rem;
+  border-bottom: 1px solid var(--border);
+  background: var(--bg-subtle);
+}
+.code-dot { width: 11px; height: 11px; border-radius: 50%; display: inline-block; }
+.code-file {
+  margin-left: 0.55rem;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--text-3);
+}
+.code-body {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  line-height: 1.7;
+  padding: 1.05rem 1.2rem 1.2rem;
+  min-height: 372px;
+  white-space: pre-wrap;
+  word-break: break-word;
+  color: var(--text);
+}
+.code-caret {
+  display: inline-block;
+  width: 8px; height: 1.02em;
+  background: var(--accent);
+  vertical-align: text-bottom;
+  margin-left: 2px;
+  animation: caret-blink 1s steps(1) infinite;
+}
+@keyframes caret-blink {
+  0%, 55% { opacity: 1; }
+  56%, 100% { opacity: 0; }
+}
+.tok-key { color: #c084fc; }
+.tok-class { color: #facc15; }
+.tok-type { color: #7dd3fc; }
+.tok-str { color: #34d399; }
+.tok-prop { color: #e2e8f0; }
+.tok-fn { color: #fda4af; }
+.tok-punc { color: var(--text-2); }
+[data-theme='light'] .tok-prop { color: #0f172a; }
+
 /* ---------- About ---------- */
 .about-grid {
   display: grid;
@@ -608,7 +668,7 @@ img { max-width: 100%; }
 @media (max-width: 860px) {
   .nav-links { display: none; }
   .nav-toggle { display: inline-flex; }
-  .about-grid, .contact-grid, .projects-grid, .skills-grid, .skills-layout { grid-template-columns: 1fr; }
+  .about-grid, .contact-grid, .projects-grid, .skills-grid, .skills-layout, .hero-grid { grid-template-columns: 1fr; }
   .hero { padding-top: 8.5rem; }
   .section { padding: 4rem 0; }
   .hero-stats { flex-direction: column; }
@@ -617,6 +677,6 @@ img { max-width: 100%; }
 
 @media (prefers-reduced-motion: reduce) {
   .reveal { opacity: 1; transform: none; transition: none; }
-  .hero h1 .accent, .hero-badge .dot, .hero-stats, .skill-chip, .orbit-ring, .planet, .orbit-sun { animation: none; }
+  .hero h1 .accent, .hero-badge .dot, .hero-stats, .skill-chip, .orbit-ring, .planet, .orbit-sun, .code-card, .code-caret { animation: none; }
   html { scroll-behavior: auto; }
 }

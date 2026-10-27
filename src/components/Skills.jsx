@@ -1,6 +1,25 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Code, MonitorSmartphone, Server, Database, Wrench } from 'lucide-react';
+
+// skillicons' default tiles have a near-black (#242938) background, which
+// looks like ugly black blobs on this dark theme. Ask skillicons for its
+// light tiles while the site is in dark mode (and dark tiles in light
+// mode) so every icon always contrasts with the page.
+const useSiteTheme = () => {
+    const [theme, setTheme] = useState(() => document.documentElement.getAttribute('data-theme') || 'dark');
+    useEffect(() => {
+        const observer = new MutationObserver(() => {
+            setTheme(document.documentElement.getAttribute('data-theme') || 'dark');
+        });
+        observer.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+        return () => observer.disconnect();
+    }, []);
+    return theme;
+};
+
+const iconUrl = (icon, siteTheme) =>
+    `https://skillicons.dev/icons?i=${icon}&theme=${siteTheme === 'light' ? 'dark' : 'light'}`;
 
 // icon = skillicons.dev id; null = text monogram (skillicons has no SQL Server icon)
 const categories = [
@@ -92,7 +111,7 @@ const orbits = [
     },
 ];
 
-const OrbitSystem = () => (
+const OrbitSystem = ({ siteTheme }) => (
     <div className="orbit-system" role="img" aria-label="Skill solar system">
         <div className="orbit-sun">
             <img
@@ -123,7 +142,7 @@ const OrbitSystem = () => (
                             title={p.name}
                         >
                             <img
-                                src={`https://skillicons.dev/icons?i=${p.icon}`}
+                                src={iconUrl(p.icon, siteTheme)}
                                 alt={p.name}
                                 width="24"
                                 height="24"
@@ -138,11 +157,11 @@ const OrbitSystem = () => (
     </div>
 );
 
-const SkillChip = ({ item, index = 0 }) => (
+const SkillChip = ({ item, index = 0, siteTheme }) => (
     <span className="skill-chip" style={{ animationDelay: `${(index % 6) * 0.22}s` }}>
         {item.icon ? (
             <img
-                src={`https://skillicons.dev/icons?i=${item.icon}`}
+                src={iconUrl(item.icon, siteTheme)}
                 alt=""
                 width="20"
                 height="20"
@@ -158,6 +177,7 @@ const SkillChip = ({ item, index = 0 }) => (
 
 const Skills = () => {
     const { t } = useTranslation();
+    const siteTheme = useSiteTheme();
 
     return (
         <section id="skills" className="section">
@@ -170,7 +190,7 @@ const Skills = () => {
 
                 <div className="skills-layout">
                     <div className="reveal orbit-wrap">
-                        <OrbitSystem />
+                        <OrbitSystem siteTheme={siteTheme} />
                         <p className="orbit-hint">{t('skills.orbit_hint')}</p>
                     </div>
 
@@ -187,7 +207,7 @@ const Skills = () => {
                                 </div>
                                 <div className="skill-card-chips">
                                     {cat.items.map((item, i) => (
-                                        <SkillChip key={item.name} item={item} index={i} />
+                                        <SkillChip key={item.name} item={item} index={i} siteTheme={siteTheme} />
                                     ))}
                                 </div>
                             </div>
