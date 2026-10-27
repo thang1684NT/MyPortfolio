@@ -6,6 +6,7 @@ import Skills from './components/Skills';
 import Projects from './components/Projects';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
+import ParticleNet from './components/ParticleNet';
 import './i18n';
 
 function App() {
@@ -43,11 +44,7 @@ function App() {
 
   return (
     <div className="App">
-      <div className="bg-anim" aria-hidden="true">
-        <span className="orb orb-1"></span>
-        <span className="orb orb-2"></span>
-        <span className="orb orb-3"></span>
-      </div>
+      <ParticleNet />
       <Navbar activeSection={activeSection} />
       <main>
         <Hero />

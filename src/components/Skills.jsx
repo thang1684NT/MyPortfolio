@@ -60,8 +60,8 @@ const categories = [
     },
 ];
 
-const SkillChip = ({ item }) => (
-    <span className="skill-chip">
+const SkillChip = ({ item, index = 0 }) => (
+    <span className="skill-chip" style={{ animationDelay: `${(index % 6) * 0.22}s` }}>
         {item.icon ? (
             <img
                 src={`https://skillicons.dev/icons?i=${item.icon}`}
@@ -102,8 +102,8 @@ const Skills = () => {
                                 {t(`skills.${cat.key}`)}
                             </div>
                             <div className="skill-card-chips">
-                                {cat.items.map((item) => (
-                                    <SkillChip key={item.name} item={item} />
+                                {cat.items.map((item, i) => (
+                                    <SkillChip key={item.name} item={item} index={i} />
                                 ))}
                             </div>
                         </div>
