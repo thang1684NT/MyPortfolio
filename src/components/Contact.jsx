@@ -5,116 +5,57 @@ import { Mail, Phone, MapPin, Send, Github, Linkedin, Facebook } from 'lucide-re
 const Contact = () => {
     const { t } = useTranslation();
 
+    const items = [
+        { icon: <Mail size={19} />, label: t('contact.email'), value: 'namthang@gmail.com' },
+        { icon: <Phone size={19} />, label: t('contact.phone'), value: '+84 123 456 789' },
+        { icon: <MapPin size={19} />, label: t('contact.address'), value: 'Da Nang, Viet Nam' },
+    ];
+
     return (
         <section id="contact" className="section">
             <div className="container">
-                <div style={{ textAlign: 'center', marginBottom: '3.5rem' }}>
-                    <div className="fade-in">
-                        <h2 className="section-title">
-                            <span className="text-gradient">Contact Me</span>
-                        </h2>
-                        <div className="section-divider"></div>
-                        <p style={{ color: 'var(--text-secondary)', marginTop: '0.5rem', fontWeight: '500' }}>
-                            {t('contact.tagline') || "Let's build something amazing together."}
-                        </p>
-                    </div>
+                <div className="section-head reveal">
+                    <p className="section-eyebrow">04 — {t('nav.contact')}</p>
+                    <h2 className="section-title">{t('contact.title')}</h2>
+                    <p className="section-sub">{t('contact.tagline')}</p>
                 </div>
 
-                <div style={{
-                    display: 'grid',
-                    gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
-                    gap: '2.5rem',
-                    alignItems: 'start'
-                }}>
-                    <div className="fade-in">
-                        <div className="glass" style={{ padding: '2rem', height: '100%' }}>
-                            <h3 style={{ fontSize: '1.35rem', fontWeight: '800', marginBottom: '1.5rem' }}>Get in Touch</h3>
-
-                            <div style={{ display: 'flex', flexDirection: 'column', gap: '1.6rem' }}>
-                                <div style={{ display: 'flex', alignItems: 'center', gap: '1.2rem' }}>
-                                    <div style={{ background: 'var(--skill-bg)', p: '1rem', padding: '1rem', borderRadius: '1rem', color: 'var(--primary)', border: '1px solid var(--border-glow)' }}>
-                                        <Mail size={24} />
-                                    </div>
-                                    <div>
-                                        <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', fontWeight: '600', textTransform: 'uppercase' }}>{t('contact.email')}</p>
-                                        <p style={{ fontSize: '0.98rem', fontWeight: '700' }}>namthang@gmail.com</p>
-                                    </div>
-                                </div>
-
-                                <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem' }}>
-                                    <div style={{ background: 'var(--skill-bg)', padding: '1rem', borderRadius: '1rem', color: 'var(--secondary)', border: '1px solid var(--border-glow)' }}>
-                                        <Phone size={24} />
-                                    </div>
-                                    <div>
-                                        <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', fontWeight: '600', textTransform: 'uppercase' }}>{t('contact.phone')}</p>
-                                        <p style={{ fontSize: '0.98rem', fontWeight: '700' }}>+84 123 456 789</p>
-                                    </div>
-                                </div>
-
-                                <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem' }}>
-                                    <div style={{ background: 'var(--skill-bg)', padding: '1rem', borderRadius: '1rem', color: 'var(--accent)', border: '1px solid var(--border-glow)' }}>
-                                        <MapPin size={24} />
-                                    </div>
-                                    <div>
-                                        <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', fontWeight: '600', textTransform: 'uppercase' }}>{t('contact.address')}</p>
-                                        <p style={{ fontSize: '0.98rem', fontWeight: '700' }}>Da Nang, Viet Nam</p>
-                                    </div>
+                <div className="contact-grid">
+                    <div className="card reveal">
+                        {items.map((item) => (
+                            <div key={item.label} className="contact-item">
+                                <div className="contact-icon">{item.icon}</div>
+                                <div>
+                                    <div className="lbl">{item.label}</div>
+                                    <div className="val">{item.value}</div>
                                 </div>
                             </div>
+                        ))}
 
-                            <div style={{ marginTop: '2.25rem', paddingTop: '1.5rem', borderTop: '1px solid var(--border-glow)', display: 'flex', gap: '1.5rem' }}>
-                                <a href="#" className="btn" style={{ padding: '0.8rem', background: 'var(--skill-bg)' }}><Github size={20} /></a>
-                                <a href="#" className="btn" style={{ padding: '0.8rem', background: 'var(--skill-bg)' }}><Linkedin size={20} /></a>
-                                <a href="#" className="btn" style={{ padding: '0.8rem', background: 'var(--skill-bg)' }}><Facebook size={20} /></a>
-                            </div>
+                        <div className="socials">
+                            <a href="https://github.com/thang1684NT" target="_blank" rel="noreferrer" aria-label="GitHub"><Github size={18} /></a>
+                            <a href="#" aria-label="LinkedIn"><Linkedin size={18} /></a>
+                            <a href="#" aria-label="Facebook"><Facebook size={18} /></a>
                         </div>
                     </div>
 
-                    <div className="fade-in">
-                        <form className="glass" style={{ padding: '2rem' }} onSubmit={(e) => e.preventDefault()}>
-                            <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
-                                <div>
-                                    <label style={{ display: 'block', marginBottom: '0.8rem', fontWeight: '700', fontSize: '0.9rem' }}>Full Name</label>
-                                    <input
-                                        type="text"
-                                        placeholder="Enter your name"
-                                        style={{
-                                            width: '100%', padding: '0.95rem 1.1rem', borderRadius: '0.8rem',
-                                            background: 'rgba(0,0,0,0.05)', border: '1px solid var(--border-glow)',
-                                            color: 'var(--text-primary)', outline: 'none'
-                                        }}
-                                    />
-                                </div>
-                                <div>
-                                    <label style={{ display: 'block', marginBottom: '0.8rem', fontWeight: '700', fontSize: '0.9rem' }}>Email Address</label>
-                                    <input
-                                        type="email"
-                                        placeholder="Enter your email"
-                                        style={{
-                                            width: '100%', padding: '0.95rem 1.1rem', borderRadius: '0.8rem',
-                                            background: 'rgba(0,0,0,0.05)', border: '1px solid var(--border-glow)',
-                                            color: 'var(--text-primary)', outline: 'none'
-                                        }}
-                                    />
-                                </div>
-                                <div>
-                                    <label style={{ display: 'block', marginBottom: '0.8rem', fontWeight: '700', fontSize: '0.9rem' }}>Message</label>
-                                    <textarea
-                                        rows="5"
-                                        placeholder="How can I help you?"
-                                        style={{
-                                            width: '100%', padding: '0.95rem 1.1rem', borderRadius: '0.8rem',
-                                            background: 'rgba(0,0,0,0.05)', border: '1px solid var(--border-glow)',
-                                            color: 'var(--text-primary)', outline: 'none', resize: 'none'
-                                        }}
-                                    ></textarea>
-                                </div>
-                                <button type="submit" className="btn btn-primary" style={{ width: '100%', justifyContent: 'center', padding: '0.95rem' }}>
-                                    Send Message <Send size={20} />
-                                </button>
-                            </div>
-                        </form>
-                    </div>
+                    <form className="form-card reveal" onSubmit={(e) => e.preventDefault()}>
+                        <div className="field">
+                            <label htmlFor="ct-name">Full Name</label>
+                            <input id="ct-name" type="text" placeholder="Enter your name" autoComplete="name" />
+                        </div>
+                        <div className="field">
+                            <label htmlFor="ct-email">Email Address</label>
+                            <input id="ct-email" type="email" placeholder="Enter your email" autoComplete="email" />
+                        </div>
+                        <div className="field">
+                            <label htmlFor="ct-msg">Message</label>
+                            <textarea id="ct-msg" rows="5" placeholder="How can I help you?"></textarea>
+                        </div>
+                        <button type="submit" className="btn btn-primary">
+                            Send Message <Send size={16} />
+                        </button>
+                    </form>
                 </div>
             </div>
         </section>

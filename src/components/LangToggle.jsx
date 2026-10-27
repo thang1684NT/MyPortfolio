@@ -6,19 +6,13 @@ const LangToggle = () => {
     const { i18n } = useTranslation();
 
     const toggleLang = () => {
-        const newLang = i18n.language === 'en' ? 'vi' : 'en';
-        i18n.changeLanguage(newLang);
+        i18n.changeLanguage(i18n.language === 'en' ? 'vi' : 'en');
     };
 
     return (
-        <button
-            onClick={toggleLang}
-            className="flex items-center gap-2"
-            style={{ background: 'transparent', border: 'none', cursor: 'pointer', color: 'var(--text-color)', display: 'flex', alignItems: 'center', gap: '5px' }}
-            aria-label="Switch Language"
-        >
-            <Languages size={24} />
-            <span style={{ fontWeight: 'bold' }}>{i18n.language.toUpperCase()}</span>
+        <button onClick={toggleLang} className="lang-btn" aria-label="Switch language">
+            <Languages size={16} />
+            <span>{(i18n.language || 'vi').toUpperCase()}</span>
         </button>
     );
 };

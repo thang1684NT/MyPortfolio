@@ -12,7 +12,11 @@
         "role": "Software Engineer",
         "description": "Passionate about building efficient applications and eager to contribute to real-world projects.",
         "cta": "View Projects",
-        "contact_me": "Contact Me"
+        "contact_me": "Contact Me",
+        "badge": "Available for new opportunities",
+        "stat_tech": "Technologies",
+        "stat_projects": "Team projects",
+        "stat_gpa": "GPA / 4.0"
     },
     "about": {
         "title": "About Me",
@@ -30,9 +34,9 @@
         "tagline": "The tools I use to build the future.",
         "languages": "Programming Languages",
         "frontend": "Front-end",
-        "frameworks": "Frameworks",
+        "frameworks": "Backend & Frameworks",
         "database": "Database",
-        "tools": "API & Tools",
+        "tools": "Tools & DevOps",
         "soft_skills": "Soft Skills",
         "soft_skills_list": "Teamwork, Communication, Critical Thinking, Problem Solving"
     },
@@ -69,7 +73,8 @@
         "title": "Contact Me",
         "email": "Email",
         "phone": "Phone",
-        "address": "Address"
+        "address": "Address",
+        "tagline": "Let's build something amazing together."
     },
     "footer": {
         "rights": "© 2026 Nguyễn Nam Thắng. All rights reserved."

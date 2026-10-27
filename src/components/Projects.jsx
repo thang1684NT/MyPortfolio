@@ -1,6 +1,6 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { Github, ExternalLink, Calendar, Users, Code, Briefcase } from 'lucide-react';
+import { Github, Calendar, Users, Code } from 'lucide-react';
 
 const Projects = () => {
     const { t } = useTranslation();
@@ -14,8 +14,7 @@ const Projects = () => {
             year: "2024",
             tech: ["Java Servlet", "SQL Server", "HTML/CSS/JS", "Bootstrap"],
             description: "Developed full CRUD functionality for product management, designed product listing with enhanced filtering, search, and form validation. Integrated sales statistics and built a chatbot using Dialogflow.",
-            github: "https://github.com/3h4524/FruitManagement.git",
-            demo: "#"
+            github: "https://github.com/3h4524/FruitManagement.git"
         },
         {
             id: 'food_hub',
@@ -26,118 +25,52 @@ const Projects = () => {
             tech: ["Java Spring Boot", "MySQL", "HTML/CSS/JS", "Bootstrap"],
             description: "Implemented admin role management for menu, employees, and customers. Developed transaction tracking, revenue reports, and built RESTful APIs with Spring Boot for frontend integration.",
             github: "https://github.com/Nguyenkhang2004/FoodHub.git",
-            github_fe: "https://github.com/LeThanhNguyen-dev/FE_FoodHub.git",
-            demo: "#"
+            github_fe: "https://github.com/LeThanhNguyen-dev/FE_FoodHub.git"
         }
     ];
 
     return (
         <section id="projects" className="section">
             <div className="container">
-                <div style={{ textAlign: 'center', marginBottom: '3.5rem' }}>
-                    <div className="fade-in">
-                        <h2 className="section-title">
-                            <span className="text-gradient">{t('projects.title')}</span>
-                        </h2>
-                        <div className="section-divider"></div>
-                        <p style={{ color: 'var(--text-secondary)', marginTop: '0.5rem', fontWeight: '500' }}>{t('projects.tagline')}</p>
-                    </div>
+                <div className="section-head reveal">
+                    <p className="section-eyebrow">03 — {t('nav.projects')}</p>
+                    <h2 className="section-title">{t('projects.title')}</h2>
+                    <p className="section-sub">{t('projects.tagline')}</p>
                 </div>
 
-                <div style={{
-                    display: 'grid',
-                    gridTemplateColumns: 'repeat(auto-fit, minmax(360px, 1fr))',
-                    gap: '2rem',
-                    maxWidth: '1200px',
-                    margin: '0 auto'
-                }}>
-                    {projectsData.map((project, idx) => (
-                        <div
-                            key={project.id}
-                            className="glass fade-in"
-                            style={{
-                                padding: '2rem',
-                                display: 'flex',
-                                flexDirection: 'column',
-                                animationDelay: `${idx * 0.1}s`,
-                                height: '100%'
-                            }}
-                        >
-                            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.75rem' }}>
-                                <div style={{ background: 'var(--skill-bg)', padding: '0.8rem', borderRadius: '1.2rem', color: 'var(--primary)', border: '1px solid var(--border-glow)' }}>
-                                    <Code size={24} />
-                                </div>
-                                <div style={{ display: 'flex', gap: '1rem' }}>
-                                    <a
-                                        href={project.github}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="btn"
-                                        style={{ width: '45px', height: '45px', padding: '0', justifyContent: 'center', background: 'var(--skill-bg)' }}
-                                        title="Github Repository"
-                                    >
-                                        <Github size={20} />
+                <div className="projects-grid">
+                    {projectsData.map((project) => (
+                        <article key={project.id} className="project-card reveal">
+                            <div className="project-top">
+                                <div className="project-icon"><Code size={21} /></div>
+                                <div className="project-links">
+                                    <a href={project.github} target="_blank" rel="noopener noreferrer" title="GitHub Repository" aria-label="GitHub Repository">
+                                        <Github size={17} />
                                     </a>
                                     {project.github_fe && (
-                                        <a
-                                            href={project.github_fe}
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                            className="btn"
-                                            style={{ width: '45px', height: '45px', padding: '0', justifyContent: 'center', background: 'var(--skill-bg)' }}
-                                            title="Frontend Repo"
-                                        >
-                                            <Github size={20} color="var(--secondary)" />
+                                        <a href={project.github_fe} target="_blank" rel="noopener noreferrer" title="Frontend Repo" aria-label="Frontend Repo">
+                                            <Github size={17} />
                                         </a>
                                     )}
                                 </div>
                             </div>
 
-                            <div style={{
-                                display: 'inline-flex',
-                                alignItems: 'center',
-                                gap: '0.5rem',
-                                color: 'var(--secondary)',
-                                fontWeight: '800',
-                                fontSize: '0.78rem',
-                                textTransform: 'uppercase',
-                                letterSpacing: '1px',
-                                marginBottom: '1rem'
-                            }}>
-                                <Briefcase size={16} /> {project.role}
+                            <p className="project-role">{project.role}</p>
+                            <h3>{project.title}</h3>
+
+                            <div className="project-meta">
+                                <span><Users size={14} /> {project.teamSize} Members</span>
+                                <span><Calendar size={14} /> {project.year}</span>
                             </div>
 
-                            <h3 style={{ fontSize: '1.35rem', marginBottom: '0.9rem', fontWeight: '800', color: 'var(--text-primary)' }}>
-                                {project.title}
-                            </h3>
+                            <p className="project-desc">{project.description}</p>
 
-                            <div style={{ display: 'flex', gap: '1.5rem', marginBottom: '1.4rem', color: 'var(--text-secondary)', fontSize: '0.82rem', fontWeight: '700' }}>
-                                <span style={{ display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
-                                    <Users size={16} color="var(--primary)" /> {project.teamSize} Members
-                                </span>
-                                <span style={{ display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
-                                    <Calendar size={16} color="var(--primary)" /> {project.year}
-                                </span>
-                            </div>
-
-                            <p style={{ color: 'var(--text-secondary)', marginBottom: '1.75rem', fontSize: '0.95rem', lineHeight: '1.7', flex: 1 }}>
-                                {project.description}
-                            </p>
-
-                            <div style={{
-                                display: 'flex',
-                                flexWrap: 'wrap',
-                                gap: '0.8rem',
-                                borderTop: '1px solid var(--border-glow)',
-                                paddingTop: '1.4rem'
-                            }}>
-                                {project.tech.map(t => (
-                                    <span key={t} className="skill-tag" style={{ fontSize: '0.75rem', background: 'var(--skill-bg)' }}>
-                                        {t}
-                                    </span>
+                            <div className="project-tech">
+                                {project.tech.map((tech) => (
+                                    <span key={tech} className="chip">{tech}</span>
                                 ))}
                             </div>
-                        </div>
+                        </article>
                     ))}
                 </div>
             </div>

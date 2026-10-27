@@ -1,98 +1,66 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { GraduationCap, ExternalLink, Sparkles } from 'lucide-react';
-
-// Lightweight code-editor visual — replaces the heavy Lottie animations
-// (lottie-react bundle + 2 remote JSON files looping forever) that caused lag.
-const CodeWindow = () => (
-    <div className="glass" style={{ padding: '0', borderRadius: '1.25rem', position: 'relative', overflow: 'hidden' }}>
-        <div style={{
-            display: 'flex', alignItems: 'center', gap: '0.45rem',
-            padding: '0.7rem 1rem', borderBottom: '1px solid var(--border-glow)',
-            background: 'var(--skill-bg)'
-        }}>
-            <span style={{ width: '10px', height: '10px', borderRadius: '50%', background: '#ef4444', display: 'inline-block' }}></span>
-            <span style={{ width: '10px', height: '10px', borderRadius: '50%', background: '#f59e0b', display: 'inline-block' }}></span>
-            <span style={{ width: '10px', height: '10px', borderRadius: '50%', background: '#10b981', display: 'inline-block' }}></span>
-            <span style={{ marginLeft: '0.6rem', fontSize: '0.75rem', color: 'var(--text-secondary)', fontFamily: 'var(--font-mono)' }}>developer.js</span>
-        </div>
-        <div style={{ padding: '1.1rem 1.25rem' }}>
-            <code className="code-window">
-                <span className="tok-key">const</span> developer <span className="tok-punc">= {'{'}</span>{'\n'}
-                {'  '}<span className="tok-prop">name</span><span className="tok-punc">:</span> <span className="tok-str">'Nguyễn Nam Thắng'</span><span className="tok-punc">,</span>{'\n'}
-                {'  '}<span className="tok-prop">role</span><span className="tok-punc">:</span> <span className="tok-str">'Software Engineer'</span><span className="tok-punc">,</span>{'\n'}
-                {'  '}<span className="tok-prop">stack</span><span className="tok-punc">:</span> <span className="tok-punc">[</span><span className="tok-str">'Java'</span><span className="tok-punc">,</span> <span className="tok-str">'C#'</span><span className="tok-punc">,</span> <span className="tok-str">'React'</span><span className="tok-punc">],</span>{'\n'}
-                {'  '}<span className="tok-prop">hardWorker</span><span className="tok-punc">:</span> <span className="tok-key">true</span><span className="tok-punc">,</span>{'\n'}
-                {'  '}<span className="tok-prop">quickLearner</span><span className="tok-punc">:</span> <span className="tok-key">true</span><span className="tok-punc">,</span>{'\n'}
-                {'  '}<span className="tok-prop">hireable</span><span className="tok-punc">:</span> <span className="tok-key">function</span> <span className="tok-punc">() {'{'}</span>{'\n'}
-                {'    '}<span className="tok-key">return</span> <span className="tok-key">true</span><span className="tok-punc">;</span>{'\n'}
-                {'  '}<span className="tok-punc">{'}'}</span>{'\n'}
-                <span className="tok-punc">{'};'}</span>
-            </code>
-        </div>
-    </div>
-);
+import { GraduationCap, Award, ExternalLink } from 'lucide-react';
 
 const About = () => {
     const { t } = useTranslation();
 
     const certificates = [
-        {
-            name: "Software Development Lifecycle",
-            issuer: "University of Minnesota",
-            url: "https://www.coursera.org/specializations/software-development-lifecycle"
-        },
-        {
-            name: "Web Design for Everybody",
-            issuer: "University of Michigan",
-            url: "https://www.coursera.org/specializations/web-design"
-        }
+        { name: "Software Development Lifecycle", issuer: "University of Minnesota", url: "https://www.coursera.org/specializations/software-development-lifecycle" },
+        { name: "Web Design for Everybody", issuer: "University of Michigan", url: "https://www.coursera.org/specializations/web-design" }
     ];
 
     return (
         <section id="about" className="section">
             <div className="container">
-                <div style={{
-                    display: 'grid',
-                    gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
-                    gap: '3rem',
-                    alignItems: 'center'
-                }}>
-                    <div className="fade-in">
-                        <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', color: 'var(--primary)', marginBottom: '1.1rem', fontWeight: '700', textTransform: 'uppercase', fontSize: '0.78rem', letterSpacing: '1px' }}>
-                            <Sparkles size={16} /> {t('about.title')}
-                        </div>
-                        <h2 className="section-title" style={{ marginBottom: '1.5rem' }}>
-                            <span className="text-gradient">{t('about.tagline')} {t('about.tagline_accent')}</span>
-                        </h2>
+                <div className="section-head reveal">
+                    <p className="section-eyebrow">01 — {t('about.title')}</p>
+                    <h2 className="section-title">{t('about.tagline')} {t('about.tagline_accent')}</h2>
+                </div>
 
-                        <div style={{ fontSize: '0.98rem', color: 'var(--text-secondary)', lineHeight: '1.8', background: 'var(--skill-bg)', padding: '1.4rem 1.5rem', borderRadius: '1rem', borderLeft: '4px solid var(--primary)', marginBottom: '1.75rem' }}>
-                            <p>{t('about.description')}</p>
-                        </div>
+                <div className="about-grid">
+                    <div className="reveal">
+                        <p className="about-text">{t('about.description')}</p>
 
-                        <div className="glass" style={{ padding: '1.5rem' }}>
-                            <div style={{ display: 'flex', alignItems: 'center', gap: '0.8rem', marginBottom: '0.8rem' }}>
-                                <GraduationCap size={22} color="var(--primary)" />
-                                <h3 style={{ fontSize: '1.1rem', fontWeight: '800' }}>{t('about.education_title')}</h3>
-                            </div>
-                            <h4 style={{ fontSize: '1rem', marginBottom: '0.4rem' }}>{t('about.education_school')}</h4>
-                            <p style={{ color: 'var(--primary)', fontWeight: '700', fontSize: '0.92rem' }}>{t('about.education_degree')}</p>
-                            <div style={{ marginTop: '0.8rem', display: 'flex', gap: '0.8rem', fontSize: '0.82rem', color: 'var(--text-secondary)' }}>
-                                <span>{t('about.education_period')}</span>
-                                <span>•</span>
-                                <span style={{ color: 'var(--accent)', fontWeight: '700' }}>GPA: 3.2</span>
+                        <div className="about-photo">
+                            <img
+                                src={`${import.meta.env.BASE_URL}avatar.png`}
+                                alt="Nguyễn Nam Thắng"
+                                width="64"
+                                height="64"
+                                loading="lazy"
+                                decoding="async"
+                                onError={(e) => { e.currentTarget.src = "https://ui-avatars.com/api/?name=Thang&background=059669&color=fff&size=128"; }}
+                            />
+                            <div>
+                                <div className="who">Nguyễn Nam Thắng</div>
+                                <div className="role">{t('hero.role')} · Da Nang, Viet Nam</div>
                             </div>
                         </div>
                     </div>
 
-                    <div className="fade-in" style={{ animationDelay: '0.15s' }}>
-                        <CodeWindow />
+                    <div className="reveal">
+                        <div className="card">
+                            <div className="card-head">
+                                <GraduationCap size={20} /> {t('about.education_title')}
+                            </div>
+                            <p><strong style={{ color: 'var(--text)' }}>{t('about.education_school')}</strong></p>
+                            <p>{t('about.education_degree')}</p>
+                            <p className="meta">{t('about.education_period')} · <b>GPA: 3.2</b></p>
+                        </div>
 
-                        <div style={{ marginTop: '1.75rem', display: 'flex', flexDirection: 'column', gap: '0.8rem' }}>
+                        <div className="card">
+                            <div className="card-head">
+                                <Award size={20} /> {t('certificates.title')}
+                            </div>
                             {certificates.map((cert) => (
-                                <a key={cert.name} href={cert.url} target="_blank" rel="noreferrer" className="glass" style={{ padding: '1rem 1.25rem', textDecoration: 'none', display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '0.88rem', fontWeight: '700', color: 'var(--text-primary)' }}>
-                                    <span>{cert.name}<span style={{ display: 'block', fontSize: '0.78rem', fontWeight: '500', color: 'var(--text-secondary)', marginTop: '0.15rem' }}>{cert.issuer}</span></span>
-                                    <ExternalLink size={16} color="var(--primary)" />
+                                <a key={cert.name} href={cert.url} target="_blank" rel="noreferrer" className="cert-link">
+                                    <span>
+                                        <span className="cert-name">{cert.name}</span>
+                                        <br />
+                                        <span className="cert-issuer">{cert.issuer}</span>
+                                    </span>
+                                    <ExternalLink size={15} style={{ color: 'var(--text-3)', flexShrink: 0 }} />
                                 </a>
                             ))}
                         </div>

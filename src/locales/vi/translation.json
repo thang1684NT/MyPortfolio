@@ -12,7 +12,11 @@
         "role": "Kỹ Sư Phần Mềm",
         "description": "Kiến tạo tương lai bằng những dòng code, tỉ mỉ từng pixel.",
         "cta": "Xem Dự Án",
-        "contact_me": "Liên Hệ"
+        "contact_me": "Liên Hệ",
+        "badge": "Sẵn sàng cho cơ hội mới",
+        "stat_tech": "Công nghệ",
+        "stat_projects": "Dự án nhóm",
+        "stat_gpa": "GPA / 4.0"
     },
     "about": {
         "title": "Về Tôi",
@@ -30,9 +34,9 @@
         "tagline": "Những công cụ tôi dùng để kiến tạo tương lai.",
         "languages": "Ngôn Ngữ Lập Trình",
         "frontend": "Giao Diện (Front-end)",
-        "frameworks": "Frameworks",
+        "frameworks": "Backend & Frameworks",
         "database": "Cơ Sở Dữ Liệu",
-        "tools": "API & Công Cụ",
+        "tools": "Công Cụ & DevOps",
         "soft_skills": "Kỹ Năng Mềm",
         "soft_skills_list": "Làm việc nhóm, Giao tiếp, Tư duy phản biện, Giải quyết vấn đề"
     },
@@ -69,7 +73,8 @@
         "title": "Liên Hệ",
         "email": "Email",
         "phone": "Số điện thoại",
-        "address": "Địa chỉ"
+        "address": "Địa chỉ",
+        "tagline": "Cùng nhau xây dựng điều gì đó tuyệt vời."
     },
     "footer": {
         "rights": "© 2026 Nguyễn Nam Thắng. Bảo lưu mọi quyền."
