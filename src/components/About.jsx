@@ -15,7 +15,7 @@ const About = () => {
             <div className="container">
                 <div className="section-head reveal">
                     <p className="section-eyebrow">01 — {t('about.title')}</p>
-                    <h2 className="section-title">{t('about.tagline')} {t('about.tagline_accent')}</h2>
+                    <h2 className="section-title">{`${t('about.tagline')} ${t('about.tagline_accent')}`}</h2>
                 </div>
 
                 <div className="about-grid">
