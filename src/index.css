@@ -1,7 +1,7 @@
 /* ============================================================
    Minimal editorial design system — flat and fast.
-   Motion is transform/opacity only: reveal-once, a CSS marquee
-   in Skills, and a soft gradient shift on the hero name.
+   Motion is transform/opacity only: reveal-once animations
+   and a soft gradient shift on the hero name.
    No canvas, no blur, no custom cursor.
    ============================================================ */
 
@@ -331,72 +331,58 @@ img { max-width: 100%; }
 .cert-issuer { color: var(--text-3); font-size: 0.82rem; }
 
 /* ---------- Skills ---------- */
-/* Infinite marquee: two rows scrolling in opposite directions.
-   Transform-only animation; pauses on hover. */
-.marquee-wrap { margin-bottom: 3rem; }
-.marquee {
-  overflow: hidden;
-  padding: 0.45rem 0;
-  -webkit-mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
-  mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+/* Grouped card grid: every skill visible at a glance, chips wrap neatly. */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.1rem;
 }
-.marquee-track {
-  display: flex;
-  width: max-content;
-  animation: marquee-scroll linear infinite;
+.skill-card {
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background: var(--surface);
+  padding: 1.4rem 1.5rem;
+  transition: border-color 0.2s ease, transform 0.2s ease;
 }
-.marquee-track.reverse { animation-direction: reverse; }
-.marquee:hover .marquee-track { animation-play-state: paused; }
-.marquee-group {
-  display: flex;
-  gap: 0.65rem;
-  padding-right: 0.65rem;
+.skill-card:hover { border-color: var(--border-strong); transform: translateY(-2px); }
+.skill-card:last-child:nth-child(odd) { grid-column: 1 / -1; }
+.skill-card-head {
+  display: flex; align-items: center; gap: 0.7rem;
+  font-weight: 700; font-size: 1rem; margin-bottom: 1.05rem;
 }
-@keyframes marquee-scroll {
-  to { transform: translateX(-50%); }
+.skill-card-icon {
+  width: 38px; height: 38px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: var(--bg-subtle);
+  display: inline-flex; align-items: center; justify-content: center;
+  color: var(--accent-text);
+  flex-shrink: 0;
 }
+.skill-card-chips { display: flex; flex-wrap: wrap; gap: 0.55rem; }
 .skill-chip {
-  display: inline-flex; align-items: center; gap: 0.6rem;
+  display: inline-flex; align-items: center; gap: 0.55rem;
   font-family: var(--font-mono);
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   font-weight: 500;
   white-space: nowrap;
-  padding: 0.6rem 1.1rem;
+  padding: 0.5rem 0.95rem;
   border: 1px solid var(--border);
   border-radius: 999px;
-  background: var(--surface);
+  background: var(--bg-subtle);
   color: var(--text);
-  transition: border-color 0.2s ease, background 0.2s ease;
+  transition: border-color 0.2s ease, background 0.2s ease, transform 0.2s ease;
 }
-.skill-chip:hover { border-color: var(--accent); background: var(--accent-dark); }
-.skill-chip img { width: 22px; height: 22px; display: block; }
+.skill-chip:hover { border-color: var(--accent); background: var(--accent-dark); transform: translateY(-1px); }
+.skill-chip img { width: 20px; height: 20px; display: block; }
 .skill-chip-fallback {
-  width: 22px; height: 22px;
+  width: 20px; height: 20px;
   border-radius: 6px;
   background: linear-gradient(135deg, #059669, #0891b2);
   color: #fff;
   display: inline-flex; align-items: center; justify-content: center;
-  font-size: 0.5rem; font-weight: 800;
+  font-size: 0.48rem; font-weight: 800;
 }
-.skills-cats {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 1rem;
-}
-.skill-cat-card {
-  border: 1px solid var(--border);
-  border-radius: 14px;
-  background: var(--surface);
-  padding: 1.15rem 1.3rem;
-  transition: border-color 0.2s ease, transform 0.2s ease;
-}
-.skill-cat-card:hover { border-color: var(--border-strong); transform: translateY(-2px); }
-.skill-cat-card-head {
-  display: flex; align-items: center; gap: 0.55rem;
-  font-weight: 700; font-size: 0.95rem; margin-bottom: 0.4rem;
-}
-.skill-cat-card-head svg { color: var(--accent-text); }
-.skill-cat-card p { color: var(--text-2); font-size: 0.87rem; }
 
 .chips { display: flex; flex-wrap: wrap; gap: 0.55rem; }
 .chip {
@@ -532,7 +518,7 @@ img { max-width: 100%; }
 @media (max-width: 860px) {
   .nav-links { display: none; }
   .nav-toggle { display: inline-flex; }
-  .about-grid, .contact-grid, .projects-grid { grid-template-columns: 1fr; }
+  .about-grid, .contact-grid, .projects-grid, .skills-grid { grid-template-columns: 1fr; }
   .hero { padding-top: 8.5rem; }
   .section { padding: 4rem 0; }
   .hero-stats { flex-direction: column; }
@@ -541,6 +527,6 @@ img { max-width: 100%; }
 
 @media (prefers-reduced-motion: reduce) {
   .reveal { opacity: 1; transform: none; transition: none; }
-  .marquee-track, .hero h1 .accent, .hero-badge .dot { animation: none; }
+  .hero h1 .accent, .hero-badge .dot { animation: none; }
   html { scroll-behavior: auto; }
 }
