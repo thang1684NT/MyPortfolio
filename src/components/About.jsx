@@ -1,32 +1,40 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { GraduationCap, ExternalLink, Sparkles, Terminal } from 'lucide-react';
-import Lottie from 'lottie-react';
+import { GraduationCap, ExternalLink, Sparkles } from 'lucide-react';
+
+// Lightweight code-editor visual — replaces the heavy Lottie animations
+// (lottie-react bundle + 2 remote JSON files looping forever) that caused lag.
+const CodeWindow = () => (
+    <div className="glass" style={{ padding: '0', borderRadius: '1.25rem', position: 'relative', overflow: 'hidden' }}>
+        <div style={{
+            display: 'flex', alignItems: 'center', gap: '0.45rem',
+            padding: '0.7rem 1rem', borderBottom: '1px solid var(--border-glow)',
+            background: 'var(--skill-bg)'
+        }}>
+            <span style={{ width: '10px', height: '10px', borderRadius: '50%', background: '#ef4444', display: 'inline-block' }}></span>
+            <span style={{ width: '10px', height: '10px', borderRadius: '50%', background: '#f59e0b', display: 'inline-block' }}></span>
+            <span style={{ width: '10px', height: '10px', borderRadius: '50%', background: '#10b981', display: 'inline-block' }}></span>
+            <span style={{ marginLeft: '0.6rem', fontSize: '0.75rem', color: 'var(--text-secondary)', fontFamily: 'var(--font-mono)' }}>developer.js</span>
+        </div>
+        <div style={{ padding: '1.1rem 1.25rem' }}>
+            <code className="code-window">
+                <span className="tok-key">const</span> developer <span className="tok-punc">= {'{'}</span>{'\n'}
+                {'  '}<span className="tok-prop">name</span><span className="tok-punc">:</span> <span className="tok-str">'Nguyễn Nam Thắng'</span><span className="tok-punc">,</span>{'\n'}
+                {'  '}<span className="tok-prop">role</span><span className="tok-punc">:</span> <span className="tok-str">'Software Engineer'</span><span className="tok-punc">,</span>{'\n'}
+                {'  '}<span className="tok-prop">stack</span><span className="tok-punc">:</span> <span className="tok-punc">[</span><span className="tok-str">'Java'</span><span className="tok-punc">,</span> <span className="tok-str">'C#'</span><span className="tok-punc">,</span> <span className="tok-str">'React'</span><span className="tok-punc">],</span>{'\n'}
+                {'  '}<span className="tok-prop">hardWorker</span><span className="tok-punc">:</span> <span className="tok-key">true</span><span className="tok-punc">,</span>{'\n'}
+                {'  '}<span className="tok-prop">quickLearner</span><span className="tok-punc">:</span> <span className="tok-key">true</span><span className="tok-punc">,</span>{'\n'}
+                {'  '}<span className="tok-prop">hireable</span><span className="tok-punc">:</span> <span className="tok-key">function</span> <span className="tok-punc">() {'{'}</span>{'\n'}
+                {'    '}<span className="tok-key">return</span> <span className="tok-key">true</span><span className="tok-punc">;</span>{'\n'}
+                {'  '}<span className="tok-punc">{'}'}</span>{'\n'}
+                <span className="tok-punc">{'};'}</span>
+            </code>
+        </div>
+    </div>
+);
 
 const About = () => {
     const { t } = useTranslation();
-
-    const mainLottieUrl = "https://assets9.lottiefiles.com/packages/lf20_pwohahvd.json";
-    const smallLottieUrl = "https://assets10.lottiefiles.com/packages/lf20_m6zL3u.json";
-
-    const [mainAnim, setMainAnim] = useState(null);
-    const [smallAnim, setSmallAnim] = useState(null);
-
-    useEffect(() => {
-        const fetchAnims = async () => {
-            try {
-                const [res1, res2] = await Promise.all([
-                    fetch(mainLottieUrl).then(r => r.ok ? r.json() : null),
-                    fetch(smallLottieUrl).then(r => r.ok ? r.json() : null)
-                ]);
-                setMainAnim(res1);
-                setSmallAnim(res2);
-            } catch (e) {
-                console.error("Lottie loading failed", e);
-            }
-        };
-        fetchAnims();
-    }, []);
 
     const certificates = [
         {
@@ -46,40 +54,30 @@ const About = () => {
             <div className="container">
                 <div style={{
                     display: 'grid',
-                    gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
-                    gap: '4rem',
+                    gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+                    gap: '3rem',
                     alignItems: 'center'
                 }}>
                     <div className="fade-in">
-                        <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', color: 'var(--primary)', marginBottom: '1.5rem', fontWeight: '800', textTransform: 'uppercase', fontSize: '0.85rem' }}>
-                            <Sparkles size={18} /> {t('about.title')}
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', color: 'var(--primary)', marginBottom: '1.1rem', fontWeight: '700', textTransform: 'uppercase', fontSize: '0.78rem', letterSpacing: '1px' }}>
+                            <Sparkles size={16} /> {t('about.title')}
                         </div>
-                        <h2 style={{ fontSize: 'clamp(2.5rem, 5vw, 3.5rem)', marginBottom: '2rem', fontWeight: '900', lineHeight: 1.1 }}>
+                        <h2 className="section-title" style={{ marginBottom: '1.5rem' }}>
                             <span className="text-gradient">{t('about.tagline')} {t('about.tagline_accent')}</span>
                         </h2>
 
-                        <div style={{ position: 'relative', marginBottom: '2.5rem' }}>
-                            <div style={{ fontSize: '1.1rem', color: 'var(--text-secondary)', lineHeight: '1.8', background: 'var(--skill-bg)', padding: '2rem', borderRadius: '1.5rem', borderLeft: '4px solid var(--primary)', display: 'flex', alignItems: 'center', gap: '1.5rem' }}>
-                                <p style={{ flex: 1 }}>{t('about.description')}</p>
-
-                                <div style={{ width: '100px', flexShrink: 0, minHeight: '100px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                                    {smallAnim ? (
-                                        <Lottie animationData={smallAnim} loop={true} style={{ width: '100%', height: '100%' }} />
-                                    ) : (
-                                        <Terminal size={40} color="var(--primary)" opacity={0.5} />
-                                    )}
-                                </div>
-                            </div>
+                        <div style={{ fontSize: '0.98rem', color: 'var(--text-secondary)', lineHeight: '1.8', background: 'var(--skill-bg)', padding: '1.4rem 1.5rem', borderRadius: '1rem', borderLeft: '4px solid var(--primary)', marginBottom: '1.75rem' }}>
+                            <p>{t('about.description')}</p>
                         </div>
 
-                        <div className="glass" style={{ padding: '2rem' }}>
-                            <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '1rem' }}>
-                                <GraduationCap size={24} color="var(--primary)" />
-                                <h3 style={{ fontSize: '1.25rem', fontWeight: '800' }}>{t('about.education_title')}</h3>
+                        <div className="glass" style={{ padding: '1.5rem' }}>
+                            <div style={{ display: 'flex', alignItems: 'center', gap: '0.8rem', marginBottom: '0.8rem' }}>
+                                <GraduationCap size={22} color="var(--primary)" />
+                                <h3 style={{ fontSize: '1.1rem', fontWeight: '800' }}>{t('about.education_title')}</h3>
                             </div>
-                            <h4 style={{ fontSize: '1.1rem', marginBottom: '0.5rem' }}>{t('about.education_school')}</h4>
-                            <p style={{ color: 'var(--primary)', fontWeight: '700' }}>{t('about.education_degree')}</p>
-                            <div style={{ marginTop: '1rem', display: 'flex', gap: '1rem', fontSize: '0.85rem', color: 'var(--text-secondary)' }}>
+                            <h4 style={{ fontSize: '1rem', marginBottom: '0.4rem' }}>{t('about.education_school')}</h4>
+                            <p style={{ color: 'var(--primary)', fontWeight: '700', fontSize: '0.92rem' }}>{t('about.education_degree')}</p>
+                            <div style={{ marginTop: '0.8rem', display: 'flex', gap: '0.8rem', fontSize: '0.82rem', color: 'var(--text-secondary)' }}>
                                 <span>{t('about.education_period')}</span>
                                 <span>•</span>
                                 <span style={{ color: 'var(--accent)', fontWeight: '700' }}>GPA: 3.2</span>
@@ -87,25 +85,14 @@ const About = () => {
                         </div>
                     </div>
 
-                    <div className="fade-in" style={{ animationDelay: '0.2s' }}>
-                        <div className="glass" style={{ padding: '1rem', borderRadius: '3rem', position: 'relative', overflow: 'hidden', minHeight: '400px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                            <div style={{ width: '100%', height: '400px' }}>
-                                {mainAnim ? (
-                                    <Lottie animationData={mainAnim} loop={true} style={{ width: '100%', height: '100%' }} />
-                                ) : (
-                                    <div style={{ textAlign: 'center', padding: '2rem', opacity: 0.5 }}>
-                                        <div style={{ fontSize: '4rem' }}>💻</div>
-                                        <p style={{ color: 'var(--text-primary)' }}>Loading Innovation...</p>
-                                    </div>
-                                )}
-                            </div>
-                        </div>
+                    <div className="fade-in" style={{ animationDelay: '0.15s' }}>
+                        <CodeWindow />
 
-                        <div style={{ marginTop: '2.5rem', display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+                        <div style={{ marginTop: '1.75rem', display: 'flex', flexDirection: 'column', gap: '0.8rem' }}>
                             {certificates.map((cert) => (
-                                <a key={cert.name} href={cert.url} target="_blank" rel="noreferrer" className="glass" style={{ padding: '1.2rem 1.5rem', textDecoration: 'none', display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '0.95rem', fontWeight: '700', color: 'var(--text-primary)' }}>
-                                    <span>{cert.name}</span>
-                                    <ExternalLink size={18} color="var(--primary)" />
+                                <a key={cert.name} href={cert.url} target="_blank" rel="noreferrer" className="glass" style={{ padding: '1rem 1.25rem', textDecoration: 'none', display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '0.88rem', fontWeight: '700', color: 'var(--text-primary)' }}>
+                                    <span>{cert.name}<span style={{ display: 'block', fontSize: '0.78rem', fontWeight: '500', color: 'var(--text-secondary)', marginTop: '0.15rem' }}>{cert.issuer}</span></span>
+                                    <ExternalLink size={16} color="var(--primary)" />
                                 </a>
                             ))}
                         </div>

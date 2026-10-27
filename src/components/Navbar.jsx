@@ -42,7 +42,7 @@ const Navbar = ({ activeSection }) => {
                     display: 'flex',
                     alignItems: 'center',
                     gap: '0.8rem',
-                    fontSize: '1.4rem',
+                    fontSize: '1.15rem',
                     fontWeight: '900',
                     textDecoration: 'none',
                     color: 'var(--text-primary)',
@@ -55,7 +55,7 @@ const Navbar = ({ activeSection }) => {
                         display: 'flex',
                         boxShadow: '0 4px 12px rgba(99, 102, 241, 0.3)'
                     }}>
-                        <Terminal size={20} />
+                        <Terminal size={17} />
                     </div>
                     <span style={{ letterSpacing: '-1px' }}>THANG<span className="text-gradient">.DEV</span></span>
                 </a>
@@ -70,8 +70,8 @@ const Navbar = ({ activeSection }) => {
                                     key={link.href}
                                     href={link.href}
                                     style={{
-                                        fontSize: '0.85rem',
-                                        fontWeight: '800',
+                                        fontSize: '0.8rem',
+                                        fontWeight: '700',
                                         textDecoration: 'none',
                                         color: isActive ? 'var(--primary)' : 'var(--text-secondary)',
                                         transition: 'var(--transition)',
@@ -110,7 +110,7 @@ const Navbar = ({ activeSection }) => {
 
                 {/* Mobile Toggle */}
                 <button className="nav-mobile-btn" onClick={() => setIsOpen(!isOpen)} style={{ background: 'none', border: 'none', color: 'var(--text-primary)', cursor: 'none' }}>
-                    {isOpen ? <X size={30} /> : <Menu size={30} />}
+                    {isOpen ? <X size={26} /> : <Menu size={26} />}
                 </button>
             </div>
 
@@ -136,7 +136,7 @@ const Navbar = ({ activeSection }) => {
                             href={link.href}
                             onClick={() => setIsOpen(false)}
                             style={{
-                                fontSize: '1.2rem',
+                                fontSize: '1.05rem',
                                 fontWeight: '800',
                                 textDecoration: 'none',
                                 color: activeSection === link.id ? 'var(--primary)' : 'var(--text-primary)'

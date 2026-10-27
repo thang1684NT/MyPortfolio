@@ -6,14 +6,14 @@ const Hero = () => {
     const { t } = useTranslation();
 
     return (
-        <section id="home" className="section" style={{ minHeight: '90vh', display: 'flex', alignItems: 'center', position: 'relative' }}>
+        <section id="home" className="section" style={{ minHeight: '88vh', display: 'flex', alignItems: 'center', position: 'relative' }}>
             <div className="container">
                 <div style={{
                     display: 'grid',
-                    gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
-                    gap: '4rem',
+                    gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+                    gap: '3rem',
                     alignItems: 'center',
-                    maxWidth: '1200px',
+                    maxWidth: '1080px',
                     margin: '0 auto'
                 }}>
 
@@ -21,52 +21,52 @@ const Hero = () => {
                         <div style={{
                             display: 'inline-flex',
                             alignItems: 'center',
-                            gap: '0.6rem',
+                            gap: '0.5rem',
                             background: 'var(--skill-bg)',
                             color: 'var(--primary)',
-                            padding: '0.6rem 1.4rem',
+                            padding: '0.45rem 1.1rem',
                             borderRadius: '2rem',
-                            fontSize: '0.85rem',
-                            fontWeight: '800',
-                            marginBottom: '1.5rem',
+                            fontSize: '0.75rem',
+                            fontWeight: '700',
+                            marginBottom: '1.25rem',
                             border: '1px solid var(--border-glow)',
                             textTransform: 'uppercase',
                             letterSpacing: '1px'
                         }}>
-                            <ShieldCheck size={18} /> {t('hero.greeting')}
+                            <ShieldCheck size={15} /> {t('hero.greeting')}
                         </div>
 
-                        <h1 style={{ fontSize: 'clamp(3rem, 7vw, 5rem)', fontWeight: '900', lineHeight: '1', marginBottom: '1.5rem' }}>
+                        <h1 style={{ fontSize: 'clamp(2.3rem, 5.5vw, 3.4rem)', fontWeight: '800', lineHeight: '1.08', marginBottom: '1.1rem', letterSpacing: '-1px' }}>
                             <span className="text-gradient">{t('hero.name')}</span>
                         </h1>
 
                         <div style={{
                             fontFamily: 'var(--font-mono)',
                             color: 'var(--text-primary)',
-                            fontSize: '2rem',
-                            fontWeight: '800',
-                            marginBottom: '1rem',
+                            fontSize: 'clamp(1.15rem, 2.5vw, 1.45rem)',
+                            fontWeight: '700',
+                            marginBottom: '0.9rem',
                             display: 'flex',
                             alignItems: 'center',
-                            gap: '0.75rem'
+                            gap: '0.6rem'
                         }}>
-                            <span style={{ color: 'var(--primary)', fontWeight: '900' }}>&gt;_</span> {t('hero.role')}
+                            <span style={{ color: 'var(--primary)', fontWeight: '800' }}>&gt;_</span> {t('hero.role')}
                         </div>
 
                         <p style={{
-                            fontSize: '1.15rem',
+                            fontSize: '1rem',
                             color: 'var(--text-secondary)',
-                            marginBottom: '2.5rem',
-                            maxWidth: '580px',
-                            lineHeight: '1.8',
+                            marginBottom: '2rem',
+                            maxWidth: '520px',
+                            lineHeight: '1.75',
                             fontWeight: '500'
                         }}>
-                            Passionate about building efficient applications and eager to contribute to real-world projects.
+                            {t('hero.description')}
                         </p>
 
-                        <div style={{ display: 'flex', gap: '1.5rem', flexWrap: 'wrap' }}>
+                        <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
                             <a href="#projects" className="btn btn-primary">
-                                {t('hero.cta')} <ArrowRight size={20} />
+                                {t('hero.cta')} <ArrowRight size={17} />
                             </a>
                             <a href="#contact" className="btn">
                                 {t('hero.contact_me')}
@@ -80,26 +80,28 @@ const Hero = () => {
                         position: 'relative',
                     }}>
                         <div className="glass" style={{
-                            padding: '12px',
-                            borderRadius: '3.5rem',
+                            padding: '8px',
+                            borderRadius: '2rem',
                             borderWidth: '2px',
                             background: 'var(--bg-card)',
-                            boxShadow: '0 30px 60px -12px rgba(0, 0, 0, 0.25)',
+                            boxShadow: '0 24px 48px -14px rgba(0, 0, 0, 0.25)',
                             overflow: 'hidden',
                             position: 'relative'
                         }}>
                             <img
-                                src="/avatar.png"
+                                src={`${import.meta.env.BASE_URL}avatar.png`}
                                 alt="Nguyễn Nam Thắng"
+                                width="640"
+                                height="640"
+                                decoding="async"
                                 style={{
                                     width: '100%',
-                                    maxWidth: '400px',
-                                    borderRadius: '3rem',
-                                    display: 'block',
-                                    transform: 'scale(1.01)'
+                                    maxWidth: '330px',
+                                    borderRadius: '1.7rem',
+                                    display: 'block'
                                 }}
                                 onError={(e) => {
-                                    e.target.src = "https://ui-avatars.com/api/?name=Thang&background=6366f1&color=fff&size=512";
+                                    e.currentTarget.src = "https://ui-avatars.com/api/?name=Thang&background=6366f1&color=fff&size=512";
                                 }}
                             />
                         </div>

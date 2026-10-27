@@ -34,12 +34,12 @@ const Projects = () => {
     return (
         <section id="projects" className="section">
             <div className="container">
-                <div style={{ textAlign: 'center', marginBottom: '5rem' }}>
+                <div style={{ textAlign: 'center', marginBottom: '3.5rem' }}>
                     <div className="fade-in">
-                        <h2 style={{ fontSize: 'clamp(2.5rem, 5vw, 3.5rem)', fontWeight: '900', lineHeight: 1.2 }}>
+                        <h2 className="section-title">
                             <span className="text-gradient">{t('projects.title')}</span>
                         </h2>
-                        <div style={{ width: '80px', height: '4px', background: 'var(--primary)', margin: '1.5rem auto', borderRadius: '2px' }}></div>
+                        <div className="section-divider"></div>
                         <p style={{ color: 'var(--text-secondary)', marginTop: '0.5rem', fontWeight: '500' }}>{t('projects.tagline')}</p>
                     </div>
                 </div>
@@ -47,7 +47,7 @@ const Projects = () => {
                 <div style={{
                     display: 'grid',
                     gridTemplateColumns: 'repeat(auto-fit, minmax(360px, 1fr))',
-                    gap: '3rem',
+                    gap: '2rem',
                     maxWidth: '1200px',
                     margin: '0 auto'
                 }}>
@@ -56,16 +56,16 @@ const Projects = () => {
                             key={project.id}
                             className="glass fade-in"
                             style={{
-                                padding: '3rem',
+                                padding: '2rem',
                                 display: 'flex',
                                 flexDirection: 'column',
                                 animationDelay: `${idx * 0.1}s`,
                                 height: '100%'
                             }}
                         >
-                            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2.5rem' }}>
-                                <div style={{ background: 'var(--skill-bg)', padding: '1rem', borderRadius: '1.2rem', color: 'var(--primary)', border: '1px solid var(--border-glow)' }}>
-                                    <Code size={30} />
+                            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.75rem' }}>
+                                <div style={{ background: 'var(--skill-bg)', padding: '0.8rem', borderRadius: '1.2rem', color: 'var(--primary)', border: '1px solid var(--border-glow)' }}>
+                                    <Code size={24} />
                                 </div>
                                 <div style={{ display: 'flex', gap: '1rem' }}>
                                     <a
@@ -99,7 +99,7 @@ const Projects = () => {
                                 gap: '0.5rem',
                                 color: 'var(--secondary)',
                                 fontWeight: '800',
-                                fontSize: '0.85rem',
+                                fontSize: '0.78rem',
                                 textTransform: 'uppercase',
                                 letterSpacing: '1px',
                                 marginBottom: '1rem'
@@ -107,11 +107,11 @@ const Projects = () => {
                                 <Briefcase size={16} /> {project.role}
                             </div>
 
-                            <h3 style={{ fontSize: '1.8rem', marginBottom: '1.2rem', fontWeight: '900', color: 'var(--text-primary)' }}>
+                            <h3 style={{ fontSize: '1.35rem', marginBottom: '0.9rem', fontWeight: '800', color: 'var(--text-primary)' }}>
                                 {project.title}
                             </h3>
 
-                            <div style={{ display: 'flex', gap: '1.5rem', marginBottom: '2rem', color: 'var(--text-secondary)', fontSize: '0.85rem', fontWeight: '700' }}>
+                            <div style={{ display: 'flex', gap: '1.5rem', marginBottom: '1.4rem', color: 'var(--text-secondary)', fontSize: '0.82rem', fontWeight: '700' }}>
                                 <span style={{ display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
                                     <Users size={16} color="var(--primary)" /> {project.teamSize} Members
                                 </span>
@@ -120,7 +120,7 @@ const Projects = () => {
                                 </span>
                             </div>
 
-                            <p style={{ color: 'var(--text-secondary)', marginBottom: '2.5rem', fontSize: '1.05rem', lineHeight: '1.8', flex: 1 }}>
+                            <p style={{ color: 'var(--text-secondary)', marginBottom: '1.75rem', fontSize: '0.95rem', lineHeight: '1.7', flex: 1 }}>
                                 {project.description}
                             </p>
 
@@ -129,7 +129,7 @@ const Projects = () => {
                                 flexWrap: 'wrap',
                                 gap: '0.8rem',
                                 borderTop: '1px solid var(--border-glow)',
-                                paddingTop: '2rem'
+                                paddingTop: '1.4rem'
                             }}>
                                 {project.tech.map(t => (
                                     <span key={t} className="skill-tag" style={{ fontSize: '0.75rem', background: 'var(--skill-bg)' }}>
