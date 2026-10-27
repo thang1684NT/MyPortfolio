@@ -38,7 +38,8 @@
         "database": "Cơ Sở Dữ Liệu",
         "tools": "Công Cụ & DevOps",
         "soft_skills": "Kỹ Năng Mềm",
-        "soft_skills_list": "Làm việc nhóm, Giao tiếp, Tư duy phản biện, Giải quyết vấn đề"
+        "soft_skills_list": "Làm việc nhóm, Giao tiếp, Tư duy phản biện, Giải quyết vấn đề",
+        "orbit_hint": "Rê chuột vào để dừng vòng quay"
     },
     "projects": {
         "title": "Dự Án Tiêu Biểu",

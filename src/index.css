@@ -348,7 +348,70 @@ img { max-width: 100%; }
 .cert-issuer { color: var(--text-3); font-size: 0.82rem; }
 
 /* ---------- Skills ---------- */
-/* Grouped card grid: every skill visible at a glance, chips wrap neatly. */
+/* Solar-system orbit visual next to grouped cards (cards keep every
+   skill readable at a glance; the orbit is the eye-catching motion). */
+.skills-layout {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 3rem;
+  align-items: center;
+}
+.orbit-wrap { text-align: center; }
+.orbit-hint { color: var(--text-3); font-size: 0.82rem; margin-top: 1.1rem; font-family: var(--font-mono); }
+.orbit-system {
+  position: relative;
+  width: min(430px, 88vw);
+  aspect-ratio: 1;
+  margin: 0 auto;
+}
+.orbit-sun {
+  position: absolute;
+  top: 50%; left: 50%;
+  width: 92px; height: 92px;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  overflow: hidden;
+  border: 3px solid var(--accent);
+  box-shadow: 0 0 0 6px var(--accent-dark), 0 0 42px rgba(52, 211, 153, 0.35);
+  z-index: 3;
+  animation: sun-pulse 4.5s ease-in-out infinite alternate;
+}
+.orbit-sun img { width: 100%; height: 100%; object-fit: cover; display: block; }
+@keyframes sun-pulse {
+  from { box-shadow: 0 0 0 6px var(--accent-dark), 0 0 30px rgba(52, 211, 153, 0.25); }
+  to { box-shadow: 0 0 0 8px var(--accent-dark), 0 0 52px rgba(52, 211, 153, 0.45); }
+}
+.orbit-ring {
+  position: absolute;
+  border: 1px dashed var(--border-strong);
+  border-radius: 50%;
+  animation: orbit-spin var(--dur, 40s) linear infinite;
+}
+.orbit-ring.reverse { animation-direction: reverse; }
+@keyframes orbit-spin {
+  to { transform: rotate(360deg); }
+}
+.planet {
+  position: absolute;
+  width: 42px; height: 42px;
+  margin: -21px 0 0 -21px;
+  border-radius: 50%;
+  background: var(--surface);
+  border: 1px solid var(--border-strong);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+  display: inline-flex; align-items: center; justify-content: center;
+  /* Counter-rotation: cancels the ring spin so logos stay upright */
+  animation: orbit-spin var(--dur, 40s) linear infinite reverse;
+  z-index: 2;
+}
+.orbit-ring.reverse .planet { animation-direction: normal; }
+.planet img { width: 24px; height: 24px; display: block; }
+.orbit-system:hover .orbit-ring,
+.orbit-system:hover .planet { animation-play-state: paused; }
+
+.skills-grid-col { grid-template-columns: 1fr; gap: 0.9rem; }
+.skills-grid-col .skill-card { padding: 1.15rem 1.3rem; }
+.skills-grid-col .skill-card-head { margin-bottom: 0.8rem; font-size: 0.96rem; }
 .skills-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -544,7 +607,7 @@ img { max-width: 100%; }
 @media (max-width: 860px) {
   .nav-links { display: none; }
   .nav-toggle { display: inline-flex; }
-  .about-grid, .contact-grid, .projects-grid, .skills-grid { grid-template-columns: 1fr; }
+  .about-grid, .contact-grid, .projects-grid, .skills-grid, .skills-layout { grid-template-columns: 1fr; }
   .hero { padding-top: 8.5rem; }
   .section { padding: 4rem 0; }
   .hero-stats { flex-direction: column; }
@@ -553,6 +616,6 @@ img { max-width: 100%; }
 
 @media (prefers-reduced-motion: reduce) {
   .reveal { opacity: 1; transform: none; transition: none; }
-  .hero h1 .accent, .hero-badge .dot, .hero-stats, .skill-chip { animation: none; }
+  .hero h1 .accent, .hero-badge .dot, .hero-stats, .skill-chip, .orbit-ring, .planet, .orbit-sun { animation: none; }
   html { scroll-behavior: auto; }
 }

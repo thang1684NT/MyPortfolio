@@ -38,7 +38,8 @@
         "database": "Database",
         "tools": "Tools & DevOps",
         "soft_skills": "Soft Skills",
-        "soft_skills_list": "Teamwork, Communication, Critical Thinking, Problem Solving"
+        "soft_skills_list": "Teamwork, Communication, Critical Thinking, Problem Solving",
+        "orbit_hint": "Hover to pause the orbits"
     },
     "projects": {
         "title": "Featured Projects",
